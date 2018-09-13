@@ -1,0 +1,27 @@
+queue: Hosted VS2017
+
+trigger:
+- master
+
+steps:
+  - task: NuGetToolInstaller@0
+    displayName: "Install nuget.exe and add to PATH"
+    inputs:
+        versionSpec: 4.8.*
+
+  - powershell: |
+        $patUser = 'prestopa@microsoft.com'
+        $patToken = 'osxbfvv6l33stbgrfesykrzbyf6y5q46aw7qroiljpyywh5lxfwq'
+        $securePat = ConvertTo-SecureString -String $patToken -AsPlainText -Force
+        $credential = New-Object System.Management.Automation.PSCredential($patUser, $securePat)
+        $vsRepositoryUrl = 'https://autocloudarc.pkgs.visualstudio.com/_packaging/Packages/nuget/v2/'
+        $vsRepsitoryName = 'VSRepository'
+        $moduleName = 'WriteToLogs'
+        Register-PSRepository -Name $vsRepository -SourceLocation $vsRepositoryUrl -PublishLocation $vsRepositoryUrl -InstallationPolicy Trusted -Credential $credential -Verbose
+
+        nuget.exe sources add -name $vsRepository -Source $vsRepositoryUrl -UserName $patUser -Password $patToken
+
+        Publish-Module -Path ".\$env:BUILD_REPOSITORY_NAME\$moduleName" -Repository $vsRepository -Credential $credential -NuGetApiKey $vsRepository -Verbose
+
+    displayName: "Publish PowerShell module"
+    failOnStderr: true
