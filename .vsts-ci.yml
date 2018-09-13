@@ -14,14 +14,15 @@ steps:
         $patToken = 'osxbfvv6l33stbgrfesykrzbyf6y5q46aw7qroiljpyywh5lxfwq'
         $securePat = ConvertTo-SecureString -String $patToken -AsPlainText -Force
         $credential = New-Object System.Management.Automation.PSCredential($patUser, $securePat)
-        $vsRepositoryUrl = 'https://autocloudarc.pkgs.visualstudio.com/_packaging/Packages/nuget/v2/'
-        # $vsRepsitoryName = 'VSRepository'
+        $vsGalleryUrl = 'https://pkgs.dev.azure.com/autocloudarc/_packaging/VSGallery/nuget/v3/index.json'
+        $vsRepsitoryName = "VSGallery"
         $moduleName = 'WriteToLogs'
-        Register-PSRepository -Name 'VSRepository' -SourceLocation $vsRepositoryUrl -PublishLocation $vsRepositoryUrl -InstallationPolicy Trusted -Credential $credential -Verbose
 
-        nuget.exe sources add -name 'VSRepository' -Source $vsRepositoryUrl -UserName $patUser -Password $patToken
+        Register-PSGallery -Name $vsRepsitoryName -SourceLocation $vsGalleryUrl -PublishLocation $vsGalleryUrl -InstallationPolicy Trusted -Credential $credential -Verbose
 
-        Publish-Module -Path ".\$env:BUILD_REPOSITORY_NAME\$moduleName" -Repository 'VSRepository' -Credential $credential -NuGetApiKey 'VSRepository' -Verbose
+        nuget.exe sources add -name $vsRepsitoryName -Source $vsGalleryUrl -UserName $patUser -Password $patToken
+
+        Publish-Module -Path ".\$env:BUILD_Gallery_NAME\$moduleName" -Gallery $vsRepsitoryName -Credential $credential -NuGetApiKey $vsRepsitoryName -Verbose
 
     displayName: "Publish PowerShell module"
     failOnStderr: true
