@@ -18,7 +18,7 @@ steps:
         $vsRepsitoryName = "VSGallery"
         $moduleName = 'WriteToLogs'
 
-        Register-PSGallery -Name $vsRepsitoryName -SourceLocation $vsGalleryUrl -PublishLocation $vsGalleryUrl -InstallationPolicy Trusted -Credential $credential -Verbose
+        Register-PSRepository -Name $vsRepsitoryName -SourceLocation $vsGalleryUrl -PublishLocation $vsGalleryUrl -InstallationPolicy Trusted -Credential $credential -Verbose
 
         nuget.exe sources add -name $vsRepsitoryName -Source $vsGalleryUrl -UserName $patUser -Password $patToken
 
