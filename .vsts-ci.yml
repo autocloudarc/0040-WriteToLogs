@@ -15,14 +15,13 @@ steps:
         $securePat = ConvertTo-SecureString -String $patToken -AsPlainText -Force
         $credential = New-Object System.Management.Automation.PSCredential($patUser, $securePat)
         $vsRepositoryUrl = 'https://autocloudarc.pkgs.visualstudio.com/_packaging/Packages/nuget/v2/'
-        $vsRepsitoryName = 'VSRepository'
+        # $vsRepsitoryName = 'VSRepository'
         $moduleName = 'WriteToLogs'
-        Write-Host "`$vsRepositoryName $vsRepositoryName"
-        Register-PSRepository -Name $vsRepositoryName -SourceLocation $vsRepositoryUrl -PublishLocation $vsRepositoryUrl -InstallationPolicy Trusted -Credential $credential -Verbose
+        Register-PSRepository -Name 'VSRepository' -SourceLocation $vsRepositoryUrl -PublishLocation $vsRepositoryUrl -InstallationPolicy Trusted -Credential $credential -Verbose
 
-        nuget.exe sources add -name $vsRepositoryName -Source $vsRepositoryUrl -UserName $patUser -Password $patToken
+        nuget.exe sources add -name 'VSRepository' -Source $vsRepositoryUrl -UserName $patUser -Password $patToken
 
-        Publish-Module -Path ".\$env:BUILD_REPOSITORY_NAME\$moduleName" -Repository $vsRepositoryName -Credential $credential -NuGetApiKey $vsRepositoryName -Verbose
+        Publish-Module -Path ".\$env:BUILD_REPOSITORY_NAME\$moduleName" -Repository 'VSRepository' -Credential $credential -NuGetApiKey 'VSRepository' -Verbose
 
     displayName: "Publish PowerShell module"
     failOnStderr: true
