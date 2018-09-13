@@ -17,6 +17,7 @@ steps:
         $vsRepositoryUrl = 'https://autocloudarc.pkgs.visualstudio.com/_packaging/Packages/nuget/v2/'
         $vsRepsitoryName = 'VSRepository'
         $moduleName = 'WriteToLogs'
+        Write-Host "`$vsRepositoryName $vsRepositoryName"
         Register-PSRepository -Name $vsRepositoryName -SourceLocation $vsRepositoryUrl -PublishLocation $vsRepositoryUrl -InstallationPolicy Trusted -Credential $credential -Verbose
 
         nuget.exe sources add -name $vsRepositoryName -Source $vsRepositoryUrl -UserName $patUser -Password $patToken
