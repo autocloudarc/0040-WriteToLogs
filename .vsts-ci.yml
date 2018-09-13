@@ -17,11 +17,11 @@ steps:
         $vsRepositoryUrl = 'https://autocloudarc.pkgs.visualstudio.com/_packaging/Packages/nuget/v2/'
         $vsRepsitoryName = 'VSRepository'
         $moduleName = 'WriteToLogs'
-        Register-PSRepository -Name $vsRepository -SourceLocation $vsRepositoryUrl -PublishLocation $vsRepositoryUrl -InstallationPolicy Trusted -Credential $credential -Verbose
+        Register-PSRepository -Name $vsRepositoryName -SourceLocation $vsRepositoryUrl -PublishLocation $vsRepositoryUrl -InstallationPolicy Trusted -Credential $credential -Verbose
 
-        nuget.exe sources add -name $vsRepository -Source $vsRepositoryUrl -UserName $patUser -Password $patToken
+        nuget.exe sources add -name $vsRepositoryName -Source $vsRepositoryUrl -UserName $patUser -Password $patToken
 
-        Publish-Module -Path ".\$env:BUILD_REPOSITORY_NAME\$moduleName" -Repository $vsRepository -Credential $credential -NuGetApiKey $vsRepository -Verbose
+        Publish-Module -Path ".\$env:BUILD_REPOSITORY_NAME\$moduleName" -Repository $vsRepositoryName -Credential $credential -NuGetApiKey $vsRepositoryName -Verbose
 
     displayName: "Publish PowerShell module"
     failOnStderr: true
