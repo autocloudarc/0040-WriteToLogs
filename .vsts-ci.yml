@@ -22,7 +22,7 @@ steps:
 
         nuget.exe sources add -name $vsRepsitoryName -Source $vsGalleryUrl -UserName $patUser -Password $patToken
 
-        Publish-Module -Path ".\$env:BUILD_Gallery_NAME\$moduleName" -Repository $vsRepsitoryName -Credential $credential -NuGetApiKey $vsRepsitoryName -Verbose
+        Publish-Module -Path ".\$env:BUILD_REPOSITORY_NAME\$moduleName" -Repository $vsRepsitoryName -Credential $credential -NuGetApiKey $vsRepsitoryName -Verbose
 
     displayName: "Publish PowerShell module"
     failOnStderr: true
