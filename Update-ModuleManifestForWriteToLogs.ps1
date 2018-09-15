@@ -31,7 +31,7 @@ Update-ModuleManifest -Path $manifestPath `
 -Author "Preston K. Parsard" `
 -CompanyName "AutoCloudArc" `
 -Copyright "(c) 2018 Preston K. Parsard. All rights reserved." `
--ModuleVersion '1.0.21' `
+-ModuleVersion '1.0.22' `
 -Description $desc `
 -PowerShellVersion '5.0' `
 -LicenseUri  'https://mitlicense.org/' `
