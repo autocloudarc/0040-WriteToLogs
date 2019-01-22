@@ -43,19 +43,6 @@ that arise or result from the use or distribution of the Sample Code.
 TASK-INDEX: 000
 #>
 
-#***************************************************************************************************************************************************************************
-# REVISION/CHANGE RECORD
-#---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# DATE         VERSION    NAME			     CHANGE
-#---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# 17 JUN 2015  01.0.00  Preston K. Parsard  Initial release
-# 10 JUL 2016  01.0.14  Preston K. Parsard  Minor comment correction for Write-WithIndex function
-# 10 JUL 2016  01.0.14  Preston K. Parsard  Removed reference index parameter for Write-WithIndex function to eliminate dependency on index variable from calling script
-# 10 JUL 2016  01.0.16  Preston K. Parsard  Changed $LogEntry variable to match parameter variable $Output
-# 10 JUL 2016  01.0.19  Preston K. Parsard  Removed the Write-WithIndex function since the index cannot be incremented each time the function is called from a parent scope
-# 15 OCT 2016  01.0.20  Preston K. Parsard  Added -verbose common parameter to each function for more detailed logging
-# 22 JAN 2019  1.0.22   Preston K. Parsard  Updated header notes, added requires -PSEdition Desktop and
-
 # FUNCTIONS
 
 # Send output to both the console and log file
