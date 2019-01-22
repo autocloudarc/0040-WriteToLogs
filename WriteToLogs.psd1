@@ -12,7 +12,7 @@
 RootModule = 'WriteToLogs'
 
 # Version number of this module.
-ModuleVersion = '1.1.0'
+ModuleVersion = '1.1.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -110,13 +110,13 @@ PrivateData = @{
         LicenseUri = 'https://mitlicense.org/'
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/autocloudarc/0040-WriteToLogs'
 
         # A URL to an icon representing this module.
-        # IconUri = ''
+        IconUri = 'https://github.com/autocloudarc/0000-Branding-Artifacts/blob/master/autocloudarc-g.png'
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated author, company name, copyright year, powershell version info, header notes in psm1, added PSEdition_Desktop & Windows tags and removed @ in description.'
+        ReleaseNotes = 'Updated author, company name, copyright year, powershell version info, header notes in psm1, added PSEdition_Desktop & Windows tags, updated description and added new project repo in GitHub.'
 
         # Flag to indicate whether the module requires explicit user acceptance. Place the license.txt file in the module root folder.
         # RequireLicenseAcceptance = $true
