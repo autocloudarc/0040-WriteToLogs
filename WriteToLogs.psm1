@@ -11,14 +11,6 @@ b) Logging to the console and a log file with a time-stamp index at each line;
 c) Logging to the console and file with a numeric index at each line;
 d) Logging output to only the specified log file.
 
-REL NOTES:
-The Write-ToConsoleAndLog function displays the specified content on both the PowerShell console and an included log file
-The Write-WithTime function displays the specified output on both the PowerShell console and an included log file, with a time index at each line of output.
-The Write-WithIndex function displays the specified content on both the PowerShell console and an included log file, with a sequential numeric index at each line of output.
-A typical scenario in which this can be used would be to iterate through a set of checks for a QA script which validates the correct settings for a configuration.
-The Write-ToLogOnly function writes the specified content only to the inlcuded file.
-The function here is similar to using the native ...| Out-File -FilePath <path> syntax
-
 KEYWORDS:
 Write, Logs
 
